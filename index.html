@@ -32,15 +32,16 @@
   <footer class="footer">
     <div id="message" class="message" role="status" aria-live="polite"></div>
     <div class="hint muted">
-      <strong>Hardle</strong> is like Wordle but harder.<br/>
+      <span class="text-correct">Hardle</span> is like Wordle but harder.<br/>
       <ul>
-        <li><strong>Green</strong> = correct letter, correct position</li>
-        <li><strong>Yellow</strong> = correct letter, wrong position</li>
-        <li><strong>Grey</strong> = letter not in word</li>
+        <li><span class="text-correct">Green</span> = correct letter, correct position</li>
+        <li><span class="text-present">Yellow</span> = correct letter, wrong position</li>
+        <li><span class="text-absent">Grey</span> = letter not in word</li>
       </ul>
       However, you do not know which letter is green or yellow when you make a guess.<br/>
       Instead, after each guess, <strong>the number of green and yellow letters is revealed.</strong><br/>
-      Click any letter in submitted rows to cycle: grey → yellow → green → unmarked.
+      Click any letter in submitted rows to cycle: <span class="text-correct">green</span> → <span class="text-present">yellow</span> → <span class="text-absent">grey</span> → unmarked.<br/>
+      Made with ❤️ by <a href="https://github.com/mojimoon">mojimoon</a>/<a href="https://github.com/mojimoon/hardle">hardle</a>
     </div>
   </footer>
 

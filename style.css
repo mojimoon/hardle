@@ -201,3 +201,7 @@ body {
   100% { transform: translateX(0); }
 }
 
+a { color: var(--correct); text-decoration: none; }
+.text-correct { color: var(--correct); font-weight: bold; }
+.text-present { color: var(--present); font-weight: bold; }
+.text-absent { color: var(--absent); font-weight: bold; }
