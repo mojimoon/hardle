@@ -82,6 +82,9 @@ body {
   .tile {
     font-size: 22px;
   }
+  .results {
+    overflow: visible;
+  }
   .board-section {
     grid-template-columns: 2fr 1fr; /* 保持同一行，只是宽度比例适配手机 */
     /* 可选：调整 gap 或设置 min-width/max-width */
