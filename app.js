@@ -408,7 +408,7 @@ function pickAnswerFromSeed() {
 
 function updateSeedUI() {
   $seedInput.value = String(seed ?? '');
-  $currentSeed.textContent = `(current: ${seed})`;
+  $currentSeed.textContent = `(${seed})`;
 }
 
 function resetGameState() {
