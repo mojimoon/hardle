@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hardle</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="title">Hardle</div>
+    <div class="seed-controls">
+      <label for="seed-input">Seed:</label>
+      <input id="seed-input" type="text" inputmode="numeric" placeholder="e.g. 20250905"/>
+      <button id="apply-seed">Apply</button>
+      <span id="current-seed" class="muted"></span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="board-section">
+      <div id="board" class="board" aria-label="Guess board" role="grid"></div>
+      <div id="results" class="results" aria-label="Guess results"></div>
+    </section>
+
+    <section class="keyboard-section">
+      <div id="keyboard" class="keyboard" aria-label="On-screen keyboard"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+    <div class="hint muted">
+      Click any letter in submitted rows to cycle: grey → green → yellow → unmarked.
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
