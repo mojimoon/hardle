@@ -3,7 +3,7 @@
 // Global constants
 const NUM_ROWS = 10;
 const WORD_LEN = 5;
-const CYCLE_ORDER = ['mark-absent', 'mark-correct', 'mark-present', 'unmarked']; // grey -> green -> yellow -> unmarked
+const CYCLE_ORDER = ['mark-absent', 'mark-present', 'mark-correct', 'unmarked']; // grey -> yellow -> green -> unmarked
 
 // State
 let allowedSet = new Set();
@@ -295,15 +295,27 @@ function nextCycleMark(current) {
 }
 
 // Update all tiles and keys for a specific letter according to global letterMarks[letter]
-function applyLetterMark(letter) {
+function applyLetterMark(letter, col) {
   const mark = letterMarks[letter] || 'unmarked';
 
   // Update tiles
   const tiles = $board.querySelectorAll(`.tile[data-letter="${letter}"]`);
   tiles.forEach(tile => {
+    const wasCorrect = tile.classList.contains('mark-correct');
     tile.classList.remove('mark-absent', 'mark-present', 'mark-correct');
-    if (mark !== 'unmarked') {
-      tile.classList.add(mark);
+    if (mark === 'mark-absent') {
+      tile.classList.add('mark-absent');
+    } else if (mark === 'mark-present') {
+      if (!wasCorrect) {
+        tile.classList.add('mark-present');
+      }
+    } else if (mark === 'mark-correct') {
+      if (tile.dataset.col === col) {
+        tile.classList.add('mark-correct');
+      } else if (!wasCorrect) {
+        // Only upgrade to present if not already correct
+        tile.classList.add('mark-present');
+      }
     }
   });
 
@@ -324,9 +336,14 @@ function handleTileClick(e) {
   const letter = t.dataset.letter;
   if (!letter) return;
   const current = letterMarks[letter] || 'unmarked';
+  const col = t.dataset.col;
+  if (current === 'mark-correct' && t.classList.contains('mark-present')) {
+    applyLetterMark(letter, col);
+    return;
+  }
   const next = nextCycleMark(current);
   letterMarks[letter] = next;
-  applyLetterMark(letter);
+  applyLetterMark(letter, col);
 }
 
 // Keyboard click handler
