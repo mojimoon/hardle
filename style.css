@@ -76,9 +76,19 @@ body {
   gap: 16px;
 }
 @media (max-width: 640px) {
-  .board-section {
-    grid-template-columns: 1fr;
+  :root {
+    --tile-size: 48px; /* 手机屏幕上缩小格子 */
   }
+  .board-section {
+    grid-template-columns: 2fr 1fr; /* 保持同一行，只是宽度比例适配手机 */
+    /* 可选：调整 gap 或设置 min-width/max-width */
+    gap: 8px;
+  }
+  /* .result-square {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  } */
 }
 
 .board {
@@ -201,7 +211,7 @@ body {
   100% { transform: translateX(0); }
 }
 
-a { color: var(--correct); text-decoration: none; }
+a { color: #63acfb; text-decoration: none; font-size: 12px; }
 .text-correct { color: var(--correct); font-weight: bold; }
 .text-present { color: var(--present); font-weight: bold; }
 .text-absent { color: var(--absent); font-weight: bold; }
